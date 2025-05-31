@@ -1,5 +1,6 @@
 fastapi
 uvicorn
+pydantic
 jinja2
 python-multipart
 google-auth-oauthlib
@@ -7,3 +8,4 @@ google-auth
 google-api-python-client
 python-dotenv
 google-generativeai
+dotenv

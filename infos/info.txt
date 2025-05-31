@@ -32,7 +32,7 @@ Instruções Terminal (Windows)
     .venv\Scripts\activate
 
 <Caso Necessário>
-5.1. Caso Necessário: Liberar temporariamente o acesso ao ambiente virtual:
+5.1. Liberar temporariamente o acesso ao ambiente virtual:
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 5.2. Tentar ativar novamente o ambiente virtual:
@@ -43,7 +43,7 @@ Instruções Terminal (Windows)
     pip install -r requirements.txt
 
 5. Rodar a aplicação:
-    uvicorn main:app --reload
+    uvicorn app.main:app --reload
 
 7. Sair do localhost:
     Ctrl + C
