@@ -131,7 +131,5 @@ Para maiores informações, consulte os arquivos em "infos".
 **Exemplo de requisição:**
 
 ```
-{
-  "media_ids": ["abc123", "def456"]
-}
+["abc123", "def456"]
 ```
