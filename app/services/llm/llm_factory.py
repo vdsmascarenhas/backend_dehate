@@ -4,6 +4,7 @@ from app.interfaces.llm_interface import LLMInterface
 class LLMFactory:
     @staticmethod
     def get_llm(llm: str) -> LLMInterface:
+        # Retorna uma instância do cliente LLM apropriado baseado no nome fornecido
         if llm.lower() == "gemini":
             return GeminiClient()
         else:

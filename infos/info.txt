@@ -36,7 +36,7 @@ Instruções Terminal (Windows)
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 5.2. Tentar ativar novamente o ambiente virtual:
-    python -m venv .venv
+    .venv\Scripts\activate
 </Caso Necessário>
 
 6. Instalação de Libs:

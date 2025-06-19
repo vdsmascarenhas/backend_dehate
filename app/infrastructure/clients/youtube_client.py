@@ -2,7 +2,6 @@ from typing import List
 from datetime import datetime
 from fastapi import HTTPException
 import google_auth_oauthlib.flow
-import google.oauth2.credentials
 import googleapiclient.discovery
 
 from app.core.config import CLIENT_SECRETS_FILE, SCOPES, REDIRECT_URI

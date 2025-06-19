@@ -14,12 +14,15 @@ from app.api.dependencies import get_media_service, get_comment_service
 from app.core.exceptions import InvalidFilterException
 
 
+# Instancia um roteador específico para rotas relacionadas a mídias
+# Todas as rotas deste módulo terão o prefixo /medias
 router = APIRouter(
     prefix="/medias",
     tags=["Medias"],
 )
 
-# Endpoint para listar mídias com filtros e ordenações.
+
+# Rota GET para listar mídias com filtros e ordenações
 # Exemplo: GET /medias/?format=vertical&sort_by=comments&sort_order=desc&min_views=1000
 @router.get("/", response_model=DataResponse[MediasListResponse])
 async def get_medias(
@@ -34,7 +37,7 @@ async def get_medias(
     sort_order: str = Query("desc", description="asc or desc"),
     media_service: MediaService = Depends(get_media_service),
 ):
-
+    # Cria um objeto com os parâmetros de filtro e ordenação
     params = MediaFilterParams(
         format=format,
         min_views=min_views,
@@ -47,6 +50,7 @@ async def get_medias(
         sort_order=sort_order,
     )
 
+    # Chama o serviço para filtrar as mídias com base nos parâmetros fornecidos
     try:
         total, medias = await media_service.filter_medias(params)
     except InvalidFilterException as e:
@@ -55,6 +59,7 @@ async def get_medias(
             detail=e.message,
         )
 
+    # Retorna resposta no formato padrão com os dados das mídias
     return DataResponse[MediasListResponse](
         success=True,
         message="Mídias listadas com sucesso.",
@@ -65,6 +70,7 @@ async def get_medias(
     )
 
 
+# Rota POST para limpar comentários ofensivos de múltiplas mídias
 @router.post("/clean-comments", response_model=ResponseBase)
 async def clean_comments(
     media_ids: List[str],
@@ -77,8 +83,10 @@ async def clean_comments(
         )
 
     try:
+        # Chama o serviço para remover comentários ofensivos das mídias fornecidas
         result = await comment_service.clean_negative_comments(media_ids)
         if result:
+            # Caso a operação tenha sido bem-sucedida
             return ResponseBase(
                 success=True,
                 message="Comentários ofensivos removidos com sucesso."

@@ -5,9 +5,11 @@ class AuthService(AuthInterface):
     def __init__(self, platform: str):
         self.platform: AuthInterface = PlatformFactory().get_platform(platform)
 
+    # Retorna a URL de login para redirecionamento do usuário
     async def get_login_url(self) -> str:
         return await self.platform.get_login_url()
 
+    # Processa o código de callback do OAuth e autentica o usuário
     async def handle_callback(self, code: str) -> bool:
         return await self.platform.handle_callback(code)
     

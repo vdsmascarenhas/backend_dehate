@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import List, Optional, Literal
 from app.domain.models.media import MediaType
 
+# Base comum para representação de mídia (utilizada em respostas)
 class MediaBase(BaseModel):
     id: str 
     format: MediaType
@@ -13,13 +14,16 @@ class MediaBase(BaseModel):
     comment_count: int
     like_count: int
 
+# Schema de resposta para uma mídia
 class MediaResponse(MediaBase):
     pass
 
+# Schema que representa a resposta da listagem de mídias
 class MediasListResponse(BaseModel):
     videos: List[MediaResponse]
     total: int
 
+# Parâmetros que podem ser usados para filtrar as mídias
 class MediaFilterParams(BaseModel):
     format: Optional[MediaType] = None
     min_views: Optional[int] = None

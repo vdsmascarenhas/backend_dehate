@@ -4,6 +4,7 @@ import google.generativeai as genai
 from app.interfaces.llm_interface import LLMInterface
 from app.core.config import GEMINI_API_KEY, LLM_MODEL
 
+
 class GeminiClient(LLMInterface):
     def __init__(self):
         # Configuração da chave da API

@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+# Representa um comentário relacionado a uma mídia específica
 class Comment(BaseModel):
     id: str
     media_id: str

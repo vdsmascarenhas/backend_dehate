@@ -6,6 +6,7 @@ from app.interfaces.auth_interface import AuthInterface
 class PlatformFactory:
     @staticmethod
     def get_platform(platform: str) -> PlatformInterface | AuthInterface:
+        # Cria e retorna uma instância da plataforma escolhida (ex: YouTube)
         if platform.lower() == "youtube":
             return YouTubeClient()
         else:
